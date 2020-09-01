@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <title>בחירת דמות</title>
+    <meta name="description" content="על המשתמש לבחור דמות מייצגת למשחק" />
+    <meta name="keywords" content="משחק, דמות אווטאר" />
+    <meta name="author" content="Eden Barayev & Korin Kashi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- CSS -->
+    <link href="Styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/myStyle.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/flickity.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!-- Scripts -->
+    <script src="jScripts/jquery-3.5.1.min.js" type="text/javascript"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="jScripts/flickity.pkgd.min.js"></script>
+    <script src="jScripts/JavaScript.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="centerMe">
+            <h1 class="instructions" style=" padding-top: 10vw; margin-top: unset;">
+                בואו נעצב את הגיבורה שלנו
+            </h1>
+            <img id="chosenAvatarImg" class="avatarBody" src="images/female/female.png" />
+        </div>
+
+        <!-- Flickity HTML init -->
+        <div class="gallery js-flickity AvatarWheel"
+             data-flickity-options='{ "freeScroll": true }'>
+
+            <div class="carousel-cell">
+                <div id="f1" class="c-div">
+                    <img id="1" src="/images/female/1x/Asset 1.png" alt="בת בעיצוב 1" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f2" class="c-div">
+                    <img id="2" src="/images/female/1x/Asset 2.png" alt="בת בעיצוב 2" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f3" class="c-div">
+                    <img id="3" src="/images/female/1x/Asset 3.png" alt="בת בעיצוב 3" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f4" class="c-div">
+                    <img id="4" src="images/female/1x/Asset 4.png" alt="בת בעיצוב 4" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f5" class="c-div">
+                    <img id="5" src="images/female/1x/Asset 5.png" alt="בת בעיצוב 5" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f6" class="c-div">
+                    <img id="6" src="images/female/1x/Asset 6.png" alt="בת בעיצוב 6" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f7" class="c-div">
+                    <img id="7" src="images/female/1x/Asset 7.png" alt="בת בעיצוב 7" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f8" class="c-div">
+                    <img id="8" src="images/female/1x/Asset 8.png" alt="בן בעיצוב 8" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div id="f9" class="c-div">
+                    <img id="9" src="images/female/1x/Asset 9.png" alt="בן בעיצוב 9" class="c-img" onclick="fclick(event)" />
+                </div>
+            </div>
+            <!--<div class="gallery-cell"></div>-->
+        </div>
+        <input id="finishAvatar" class="button centerMe" type="button" value="סיום" onclick="startTheGameBtn()" />
+        <script type="text/javascript">
+             document.getElementById("finishAvatar").hidden = true;
+        </script>
+
+    </div>
+</body>
+</html>

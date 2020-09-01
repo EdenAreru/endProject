@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <title>מפה</title>
+    <meta name="description" content="מפת התקדמות במשחק" />
+    <meta name="keywords" content="מפה, מרקרים, תחנות, משחק" />
+    <meta name="author" content="Eden Barayev & Korin Kashi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+    <link href="Styles/my.css" rel="stylesheet" />
+    <link href="Styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/myStyle.css" rel="stylesheet" type="text/css" />
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!-- Scripts -->
+    <script src="jScripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="jScripts/JavaScript.js" type="text/javascript"></script>
+
+
+
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #myGoogleMap {
+            margin-top: 10vw;
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript"
+            src=" https://maps.googleapis.com/maps/api/js?key=AIzaSyDx-JjtYzfZAN_7CYfZnM6CgvGi12P1jic&sensor=false&language=he">
+    </script>
+    <!-- Scripts -->
+
+    <script type="text/javascript">
+
+        var locGivhaTachmoshet = new google.maps.LatLng(31.799425, 35.228166);
+        var locTelElFool = new google.maps.LatLng(31.823323, 35.230839);
+        var locGivhaMivtar = new google.maps.LatLng(31.802700, 35.230829);
+        var locNeviSamuel = new google.maps.LatLng(31.832856, 35.180646);
+        var locBido = new google.maps.LatLng(31.834298, 35.148193);
+        var locBeitIchsa = new google.maps.LatLng(31.816539, 35.179954);
+        var locGivhaHaradar = new google.maps.LatLng(31.823776, 35.130090);
+
+        function initialize() {
+            var mapOptions = {
+                center: locGivhaTachmoshet,
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            };
+            var map = new google.maps.Map(document.getElementById("myGoogleMap"),
+                mapOptions);
+
+            //מרקר גבעת המבתר
+            var markerGivhaMivtar = new google.maps.Marker({
+                position: locGivhaMivtar,
+                map: map,
+
+            });
+            var infoGivhaMivtar = new google.maps.InfoWindow({
+                //borderRadius: 25,
+                content: "<div class='centerMe '> גבעת המבתר:</br>דוגמא אישית"
+            });
+
+
+            infoGivhaMivtar.open(map, markerGivhaMivtar);
+
+            if (readCookie("GivhaMivtar") == "done") {
+                //הפסקת אנימציה
+                markerGivhaMivtar.setAnimation(null);
+                //תמונה של סיום תחנה
+                markerGivhaMivtar.setIcon('images/icons/starDone.png');
+                //הורדת קליק
+                google.maps.event.clearInstanceListeners(markerGivhaMivtar);
+            } else {
+                //אנימציה
+                markerGivhaMivtar.setAnimation(google.maps.Animation.BOUNCE);
+                //תמונה צבעונית
+                markerGivhaMivtar.setIcon('images/icons/star.png');
+                //הוספת קליק
+                google.maps.event.addListener(markerGivhaMivtar, 'click', function () {
+                    infoGivhaMivtar.open(map, markerGivhaMivtar);
+                    console.log ("in the func")
+                    //window.location.href = '‏‏11sort.html';
+                    transferto('1.1sort.html');
+                      
+                });
+
+            }
+
+            //מרקר תל אל פול
+            var markerTelElFool = new google.maps.Marker({
+                position: locTelElFool,
+                map: map,
+                //icon: 'images/icons/star.png',
+                //animation: google.maps.Animation.BOUNCE,
+            });
+            var infoTelElFool = new google.maps.InfoWindow({
+                content: "<div class='centerMe'> תל אל פול:</br>אומץ לב"
+            });
+            infoTelElFool.open(map, markerTelElFool);
+
+            if (readCookie("TelElFool") == "done") {
+                //הפסקת אנימציה
+                markerTelElFool.setAnimation(null);
+                //תמונה של סיום תחנה
+                markerTelElFool.setIcon('images/icons/starDone.png');
+                //הורדת קליק
+                google.maps.event.clearInstanceListeners(markerTelElFool);
+            } else {
+                //אנימציה
+                markerTelElFool.setAnimation(google.maps.Animation.BOUNCE);
+                //תמונה צבעונית
+                markerTelElFool.setIcon('images/icons/star.png');
+                //הוספת קליק
+                google.maps.event.addListener(markerTelElFool, 'click', function () {
+                    infoTelElFool.open(map, markerTelElFool);
+                    transferto("2.1sort.html");
+                    //<a href="2.1sort.html">2.1sort.html</a>
+                });
+            }
+
+
+
+
+
+            //מרקר בית איכסא
+            var markerBeitIchsa = new google.maps.Marker({
+                position: locBeitIchsa,
+                map: map,
+            });
+            var infoBeitIchsa = new google.maps.InfoWindow({
+                content: "<div class='centerMe'> בית איכסא:</br>דאגה לזולת"
+            });
+            infoBeitIchsa.open(map, markerBeitIchsa);
+
+            if (readCookie("BeitIchsa") == "done") {
+                //הפסקת אנימציה
+                markerBeitIchsa.setAnimation(null);
+                //תמונה של סיום תחנה
+                markerBeitIchsa.setIcon('images/icons/starDone.png');
+                //הורדת קליק
+                google.maps.event.clearInstanceListeners(markerBeitIchsa);
+            } else {
+                //אנימציה
+                markerBeitIchsa.setAnimation(google.maps.Animation.BOUNCE);
+                //תמונה צבעונית
+                markerBeitIchsa.setIcon('images/icons/star.png');
+                //הוספת קליק
+                google.maps.event.addListener(markerBeitIchsa, 'click', function () {
+                    infoBeitIchsa.open(map, markerBeitIchsa);
+                    transferto('‏‏3.1‏‏trivia.html');
+                    //<a href="‏‏3.1‏‏trivia.html">‏‏3.1‏‏trivia.html</a>
+                });
+
+            }
+
+
+            //מרקר נבי סמואל
+            var markerNeviSamuel = new google.maps.Marker({
+                position: locNeviSamuel,
+                map: map,
+            });
+            var infoNeviSamuel = new google.maps.InfoWindow({
+                content: "<div class='centerMe'> נבי סמואל:</br>דבקות במטרה"
+            });
+            infoNeviSamuel.open(map, markerNeviSamuel);
+
+            if (readCookie("NeviSamuel") == "done") {
+                //הפסקת אנימציה
+                markerNeviSamuel.setAnimation(null);
+                //תמונה של סיום תחנה
+                markerNeviSamuel.setIcon('images/icons/starDone.png');
+                //הורדת קליק
+                google.maps.event.clearInstanceListeners(markerNeviSamuel);
+            } else {
+                //אנימציה
+                markerNeviSamuel.setAnimation(google.maps.Animation.BOUNCE);
+                //תמונה צבעונית
+                markerNeviSamuel.setIcon('images/icons/star.png');
+                //הוספת קליק
+                google.maps.event.addListener(markerNeviSamuel, 'click', function () {
+                    infoNeviSamuel.open(map, markerNeviSamuel);
+                    transferto('4.1‏‏sort.html');
+                    //<a href="4.1‏‏sort.html">4.1‏‏sort.html</a>
+                });
+
+            }
+
+            //מרקר בידו
+            var markerBido = new google.maps.Marker({
+                position: locBido,
+                map: map,
+            });
+            var infoBido = new google.maps.InfoWindow({
+                content: "<div class='centerMe'> בידו:</br>חמלה"
+            });
+            infoBido.open(map, markerBido);
+
+            if (readCookie("Bido") == "done") {
+                //הפסקת אנימציה
+                markerBido.setAnimation(null);
+                //תמונה של סיום תחנה
+                markerBido.setIcon('images/icons/starDone.png');
+                //הורדת קליק
+                google.maps.event.clearInstanceListeners(markerBido);
+            } else {
+                //אנימציה
+                markerBido.setAnimation(google.maps.Animation.BOUNCE);
+                //תמונה צבעונית
+                markerBido.setIcon('images/icons/star.png');
+                //הוספת קליק
+                google.maps.event.addListener(markerBido, 'click', function () {
+                    infoBido.open(map, markerBido);
+                    transferto('5.1sort.html');
+                    //<a href="5.1sort.html">5.1sort.html</a>
+                });
+
+            }
+
+
+
+
+            //מרקר גבעת הראדר
+            var markerGivhaHaradar = new google.maps.Marker({
+                position: locGivhaHaradar,
+                map: map,
+            });
+            var infoGivhaHaradar = new google.maps.InfoWindow({
+                content: "<div class='centerMe'> גבעת הראדר:</br>לקיחת יוזמה"
+            });
+            infoGivhaHaradar.open(map, markerGivhaHaradar);
+
+            if (readCookie("GivhaHaradar") == "done") {
+                //הפסקת אנימציה
+                markerGivhaHaradar.setAnimation(null);
+                //תמונה של סיום תחנה
+                markerGivhaHaradar.setIcon('images/icons/starDone.png');
+                //הורדת קליק
+                google.maps.event.clearInstanceListeners(markerGivhaHaradar);
+            } else {
+                //אנימציה
+                markerGivhaHaradar.setAnimation(google.maps.Animation.BOUNCE);
+                //תמונה צבעונית
+                markerGivhaHaradar.setIcon('images/icons/star.png');
+                //הוספת קליק
+                google.maps.event.addListener(markerGivhaHaradar, 'click', function () {
+                    infoGivhaHaradar.open(map, markerGivhaHaradar);
+                    transferto("‏‏6.1sort.html");
+                    //<a href="‏‏6.1sort.html">‏‏6.1sort.html</a>
+                });
+
+            }
+
+
+            //מרקר גבעת התחמושת
+            var markerGivhaTachmoshet = new google.maps.Marker({
+                position: locGivhaTachmoshet,
+                map: map,
+            });
+            var infoGivhaTachmoshet = new google.maps.InfoWindow({
+                content: "אנחנו כאן: גבעת התחמושת"
+            });
+            infoGivhaTachmoshet.open(map, markerGivhaTachmoshet);
+
+            google.maps.event.addListener(markerGivhaTachmoshet, 'click', function () {
+                infoGivhaTachmoshet.open(map, markerGivhaTachmoshet);
+            });
+
+
+        }
+        //marker.setAnimation(google.maps.Animation.BOUNCE);
+
+        //הוספת המפה לעמוד
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+    <header>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <nav class="overlay-content">
+                <ul>
+                    <li><a id="playerNav" href="#"><img id="playerImg" /></a></li>
+                    <li><a href="#" onclick="HowToPlayOn(); closeNav()"> ⯑ איך משחקים</a></li>
+                    <li><a href="#" onclick="aboutOn(); closeNav()">🛈 אודות</a></li>
+                    <li><a href="#" onclick="transferto('Map.html')">🗺 חזרה למפה</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="about">
+            <div style="color: white; margin-top: 13%; " class="centerMe">
+                <h5 style="font-size: 3.5vw; margin-top: 20%;">אודות</h5>
+                <a href="#" onclick="aboutOff()" style="color: white; font-size: 5vw; position: absolute; margin-top: -20px; margin-right: -45vw;">✖</a>
+                <hr />
+                <p style="font-weight: bold; font-size: 4vw;">"גיבורי הראל"</p>
+                <p style=" font-size: 3.5vw;">משחק חוויתי מבוסס מכשירים ניידים עבור גבעת התחמושת </p>
+                <br />
+                <p style=" font-size: 3.5vw;">פרויקט גמר, תש"פ</p>
+                <a style=" font-size: 3vw; text-decoration-line: underline;" href="http://www.hit.ac.il/telem/overview">הפקולטה לטכנולוגיות למידה</a>
+                <br />
+                <div class="centerThis" style=" margin-top: 5vw; font-size: 2.6vw;">
+                    <img src="/images/hitLogo.JPG" style="width: 32%;" alt="לוגו פקולטת טכנולוגיות למידה" class="s-img" />
+                    <div style="text-align:right" class="s-p">
+                        <p style="font-weight: bold;">צוות הפרויקט:</p>
+                        <p>עדן בראייב וקורין קאשי</p>
+                        <p style="font-weight: bold;">מנחות:</p>
+                        <p>רותם ישראל-פישלזון ולילך גל</p>
+                    </div>
+                    <img src="/images/GivhaLogo.png" style="width: 32%; margin-top: 3%" alt="לוגו גבעת התחמושת" class="s-img" />
+
+                    <div style="text-align:right;margin-top: 3%" class="s-p">
+                        <p>בשיתוף עם האתר הלאומי גבעת התחמושת</p>
+                        <p>מומחה תוכן: נחום ברוכי</p>
+                        <p>נציגי הארגון: אלון ולד ולילך שיריון</p>
+
+                    </div>
+
+                </div>
+                <hr />
+                <a href="https://icons8.com/icon/43987/clock">זכויות יוצרים אייקונים</a> <span> | </span>
+                <a href="https://all-free-download.com/free-vector/download/super-cute-cartoon-girl-vector_156805.html">זכויות יוצרים דמויות משתמש</a>
+                <p>
+                    © כל הזכויות שמורות למכון טכנולוגי חולון HIT
+                </p>
+
+            </div>
+        </div>
+
+
+        <div id="howToPlay">
+            <div id="myCarousel" style="width:100%" class="carousel overlay-text">
+                <a id="xbtn" href="javascript:void(0)" class="closebtn" onclick="HowToPlayOff()" style="color: white; margin-right: 15%; font-size: 10vw;">&times;</a>
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+
+                    <div class="item active centerThis">
+                        <p class="centerMe">מה צריך לעשות?</p>
+                        <img src="https://img.icons8.com/bubbles/100/000000/army-star.png" class="centerThis" width="70%" />
+                        <p class="bottomElement centerMe">למצוא את כל התחנות עם הכוחות על המפה ולכבוש אותן</p>
+                    </div>
+                    <div class="item  centerThis">
+                        <p class="centerMe">איך לנצח:</p>
+                        <img src="https://img.icons8.com/nolan/64/clock.png" class="centerThis" width="70%" />
+                        <p class="bottomElement centerMe">עונים על השאלות מהר</p>
+                    </div>
+                    <div class="item  centerThis">
+                        <p class="centerMe">איך לנצח:</p>
+                        <img src="https://img.icons8.com/nolan/64/checkmark.png" class="centerThis" width="70%" />
+                        <p class="bottomElement centerMe">עונים על השאלות נכון וצוברים מגנים</p>
+
+                    </div>
+                    <div class="item  centerThis">
+                        <p class="centerMe">סוגי מגנים:</p>
+
+                        <img src="images/goldShield.png" class="s-img " style="width: 10vw; " />
+                        <p class="s-p" display:inline-block">זהב, מענה נכון בניסיון ראשון</p>
+                        <img src="images/silverShield.png" class="s-img " style="width: 10vw; " />
+                        <p class="s-p" display:inline-block">כסף, מענה נכון בניסיון שני</p>
+                        <img src="images/bronzeShield.png" class="s-img " style="width: 10vw; " />
+                        <p class="s-p" display:inline-block">ערד, ניסיון שלישי ומעלה</p>
+                        <br />
+                        <input id="Button1" class="button centerMe bottomElement" onclick="showBtn(); HowToPlayOff(); startTimer()" type="button" value="בואו נתחיל" />
+
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">next</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById("playerNav").innerHTML += " " + readCookie("playerName") + " ";
+            document.getElementById("playerNav").disabled = true;
+        </script>
+
+
+        <div id="navAbsolute">
+
+            <div id="navContainer" style=" border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+                <span id="menuIcon" style="font-size:30px; cursor:pointer; color: var(--main-red)" onclick="openNav()">&#9776;</span>
+
+                <div id="goldShield" class="shields">
+                    <img src="images/goldShield.png" class="shImages" />
+                    <span id="goldScore" class="score"></span>
+                </div>
+                <div id="silverShield" class="shields">
+                    <img src="images/silverShield.png" class="shImages" />
+                    <span id="silverScore" class="score"></span>
+                </div>
+                <div id="bronzeShield" class="shields">
+                    <img src="images/bronzeShield.png" class="shImages" />
+                    <span id="bronzeScore" class="score"></span>
+                </div>
+                <div id="timer"><p id="seconds">00</p>:<p id="minutes">00</p></div>
+
+
+            </div>
+        </div>
+    </header>
+    <div id="myGoogleMap" style="margin-top: 0vw;"></div>
+    <script type="text/javascript">
+
+        if (readCookie("GivhaMivtar") == "done" && readCookie("TelElFool") == "done" && readCookie("BeitIchsa") == "done" && readCookie("NeviSamuel") == "done" && readCookie("Bido") == "done" && readCookie("GivhaHaradar") == "done" ) {
+            //startTimer();
+            //createCookie("pSeconds", totalSeconds, 1);
+            transferto("leaderboard.html");
+        }
+
+        function hideBtn() {
+            document.getElementById("xbtn").style.display = "none";
+        }
+        function showBtn() {
+            document.getElementById("xbtn").style.display = "block";
+            createCookie("pressedInst", "yes", 1);
+        }
+        if (readCookie("pressedInst") == "yes") {
+            startTimer();
+        } else {
+            HowToPlayOn();
+            createCookie("GivhaMivtar", "0", 1);
+            createCookie("TelElFool", "0", 1);
+            createCookie("BeitIchsa", "0", 1);
+            createCookie("NeviSamuel", "0", 1);
+            createCookie("Bido", "0", 1);
+            createCookie("GivhaHaradar", "0", 1);
+        }
+
+        hideBtn()
+        //startTimer();
+        document.getElementById("playerImg").src = readCookie("avatarImg");
+        document.getElementById("playerImg").style.width = "5%";
+
+    </script>
+
+
+
+</body>
+</html>

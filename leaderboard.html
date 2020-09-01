@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <title>טבלת מנצחים</title>
+    <meta name="description" content="הנתונים של כל המשתמשים במחשק" />
+    <meta name="keywords" content="לידרבורד, טבלת מנצחים, שחק, נתונים" />
+    <meta name="author" content="Eden Barayev & Korin Kashi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+    <link href="Styles/my.css" rel="stylesheet" />
+    <link href="Styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/myStyle.css" rel="stylesheet" type="text/css" />
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!-- Scripts -->
+    <script src="jScripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="jScripts/JavaScript.js" type="text/javascript"></script>
+
+
+
+
+
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+</head>
+<body>
+    <header>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <nav class="overlay-content">
+                <ul>
+                    <li><a id="playerNav" href="#"><img id="playerImg" /></a></li>
+                    <li><a href="#" onclick="HowToPlayOn(); closeNav()"> ⯑ איך משחקים</a></li>
+                    <li><a href="#" onclick="aboutOn(); closeNav()">🛈 אודות</a></li>
+                    <li><a href="chooseGender.html">משחק נוסף</a></li>
+                </ul>
+            </nav>
+        </div>
+        <script type="text/javascript">
+            document.getElementById("playerNav").innerHTML += " " + readCookie("playerName") + " ";
+            document.getElementById("playerNav").disabled = true;
+        </script>
+
+        <div id="navAbsolute">
+
+            <div id="navContainer">
+                <span id="menuIcon" style="font-size:7vw; cursor:pointer; color: var(--main-cream); padding-right: 4vw;" onclick="openNav()">&#9776;</span>
+
+                <div id="goldShield" class="shields">
+                    <img src="images/goldShield.png" class="shImages" />
+                    <span id="goldScore" class="score"></span>
+                </div>
+                <div id="silverShield" class="shields">
+                    <img src="images/silverShield.png" class="shImages" />
+                    <span id="silverScore" class="score"></span>
+                </div>
+                <div id="bronzeShield" class="shields">
+                    <img src="images/bronzeShield.png" class="shImages" />
+                    <span id="bronzeScore" class="score"></span>
+                </div>
+                <div id="timer"><p id="seconds">00</p>:<p id="minutes">00</p></div>
+
+            </div>
+        </div>
+    </header>
+
+    <div id="about">
+        <div style="color: white; margin-top: 13%; " class="centerMe">
+            <h5 style="font-size: 3.5vw; margin-top: 20%;">אודות</h5>
+            <a href="#" onclick="aboutOff()" style="color: white; font-size: 5vw; position: absolute; margin-top: -20px; margin-right: -45vw;">✖</a>
+            <hr />
+            <p style="font-weight: bold; font-size: 4vw;">"גיבורי הראל"</p>
+            <p style=" font-size: 3.5vw;">משחק חוויתי מבוסס מכשירים ניידים עבור גבעת התחמושת </p>
+            <br />
+            <p style=" font-size: 3.5vw;">פרויקט גמר, תש"פ</p>
+            <a style=" font-size: 3vw; text-decoration-line: underline;" href="http://www.hit.ac.il/telem/overview">הפקולטה לטכנולוגיות למידה</a>
+            <br />
+            <div class="centerThis" style=" margin-top: 5vw; font-size: 2.6vw;">
+                <img src="/images/hitLogo.JPG" style="width: 32%;" alt="לוגו פקולטת טכנולוגיות למידה" class="s-img" />
+                <div style="text-align:right" class="s-p">
+                    <p style="font-weight: bold;">צוות הפרויקט:</p>
+                    <p>עדן בראייב וקורין קאשי</p>
+                    <p style="font-weight: bold;">מנחות:</p>
+                    <p>רותם ישראל-פישלזון ולילך גל</p>
+                </div>
+                <img src="/images/GivhaLogo.png" style="width: 32%; margin-top: 3%" alt="לוגו גבעת התחמושת" class="s-img" />
+
+                <div style="text-align:right;margin-top: 3%" class="s-p">
+                    <p>בשיתוף עם האתר הלאומי גבעת התחמושת</p>
+                    <p>מומחה תוכן: נחום ברוכי</p>
+                    <p>נציגי הארגון: אלון ולד ולילך שיריון</p>
+
+                </div>
+
+            </div>
+            <hr />
+            <a href="https://icons8.com/icon/43987/clock">זכויות יוצרים אייקונים</a> <span> | </span>
+            <a href="https://all-free-download.com/free-vector/download/super-cute-cartoon-girl-vector_156805.html">זכויות יוצרים דמויות משתמש</a>
+            <p>
+                © כל הזכויות שמורות למכון טכנולוגי חולון HIT
+            </p>
+
+        </div>
+    </div>
+
+    <div id="howToPlay">
+        <div id="myCarousel" style="width:100%" class="carousel overlay-text">
+            <a href="javascript:void(0)" class="closebtn" onclick="HowToPlayOff()" style="color: white; margin-right: 15%; font-size: 10vw;">&times;</a>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <div class="item active centerThis">
+                    <p class="centerMe">מה צריך לעשות?</p>
+                    <img src="https://img.icons8.com/bubbles/100/000000/army-star.png" class="centerThis" width="70%" />
+                    <p class="bottomElement centerMe">למצוא את כל התחנות עם הכוחות על המפה ולכבוש אותן</p>
+                </div>
+                <div class="item  centerThis">
+                    <p class="centerMe">איך לנצח:</p>
+                    <img src="https://img.icons8.com/nolan/64/clock.png" class="centerThis" width="70%" />
+                    <p class="bottomElement centerMe">עונים על השאלות מהר</p>
+                </div>
+                <div class="item  centerThis">
+                    <p class="centerMe">איך לנצח:</p>
+                    <img src="https://img.icons8.com/nolan/64/checkmark.png" class="centerThis" width="70%" />
+                    <p class="bottomElement centerMe">עונים על השאלות נכון וצוברים מגנים</p>
+
+                </div>
+                <div class="item  centerThis">
+                    <p class="centerMe">סוגי מגנים:</p>
+
+                    <img src="images/goldShield.png" class="s-img " style="width: 10vw; " />
+                    <p class="s-p" display:inline-block">זהב, מענה נכון בניסיון ראשון</p>
+                    <img src="images/silverShield.png" class="s-img " style="width: 10vw; " />
+                    <p class="s-p" display:inline-block">כסף, מענה נכון בניסיון שני</p>
+                    <img src="images/bronzeShield.png" class="s-img " style="width: 10vw; " />
+                    <p class="s-p bottomElement" display:inline-block">ערד, ניסיון שלישי ומעלה</p>
+
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">next</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </div>
+
+    </div>
+
+    <div id="qdiv">
+        <h1 class="instructions centerMe">טבלת המנצחים של כל הזמנים</h1>
+
+    </div>
+
+    <table id="leaderBoardTable" class="table table-striped centerMe">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" width="10%">שם</th>
+                <th scope="col">תמונה</th>
+                <th scope="col">
+                    <img src="images/goldShield.png" width="40%" />
+                </th>
+                <th scope="col">
+                    <img src="images/silverShield.png" width="40%" />
+                </th>
+                <th scope="col">
+                    <img src="images/bronzeShield.png" width="40%" />
+                </th>
+                <th scope="col">זמן</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr></tr>
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript">
+
+
+        var qsum = 24;
+        var goldTime = 30;
+        var silverTime = 45;
+        var bronzeTime = 60;
+        var goldM = 6;
+        var silverM = 3;
+        var bronzeM = 1;
+        var playerTime;
+        var playerGoldM =0;
+        var playerSilverM;
+        var playerBronzeM;
+        var timeScore;
+        var medalScore;
+        var endScore;
+
+        function myData() {
+        $.get("GetPdataHandler.ashx", {
+            //get parameters
+            myName: readCookie("playerName"),
+        })
+            .done(function (data) {
+                console.log("getData - done")
+                //get success
+                obj = JSON.parse(data);
+                //console.log(data);
+                totalSeconds = obj.playerData[0].TimeInSec + 1;
+                document.getElementById("goldScore").innerHTML = obj.playerData[0].Pgold;
+                document.getElementById("silverScore").innerHTML = obj.playerData[0].Psilver;
+                document.getElementById("bronzeScore").innerHTML = obj.playerData[0].Pbronze;
+                culci();
+            })
+            .fail(function () {
+                //get fail                
+            })
+
+            
+        }
+
+        function culci() {
+          
+            totalSeconds = parseInt(readCookie("pSeconds"));
+            //console.log("pSeconds " + readCookie("pSeconds"));
+            //console.log(400 + totalSeconds);
+            document.getElementById("seconds").innerHTML = pad(totalSeconds % 60);
+            document.getElementById("minutes").innerHTML = pad(parseInt(totalSeconds / 60));
+            playerTime = totalSeconds;
+            playerGoldM = parseInt(document.getElementById("goldScore").innerHTML);
+            playerSilverM = parseInt(document.getElementById("silverScore").innerHTML);
+            playerBronzeM = parseInt(document.getElementById("bronzeScore").innerHTML);
+
+            console.table(playerTime, playerGoldM, playerSilverM, playerBronzeM)
+            calcTimeScore();
+            //console.log("timeScore = " + timeScore)
+            calcMedalsScore();
+            //console.log("medalScore = " + medalScore)
+            calcEndSCore();
+            //console.log("endScore = " + endScore)
+
+            leadTimer();
+        }
+        
+
+
+        
+
+        function fillTable() {
+
+            var table = document.getElementById("leaderBoardTable");
+            $("#leaderBoardTable tbody td").remove();
+
+            //call to handler
+            //console.log("endscore fillTable() "+String(endScore));
+            $.get("leadersHandler.ashx", {
+                //get parameters
+
+                myTeam: "players" //sent players table
+                , pScore: String(endScore)
+                , myName: readCookie("playerName")
+            })
+                .done(function (data) {
+                    //get success
+                    console.log(data);
+                    obj = JSON.parse(data);
+
+
+
+
+                    for (var i = 1; i < obj.players.length + 1; i++) {
+                        var myNum = obj.players.length + 1 - i;
+                        var row = table.insertRow(1);
+                        row.scope = "row";
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        var cell4 = row.insertCell(3);
+                        var cell5 = row.insertCell(4);
+                        var cell6 = row.insertCell(5);
+                        var cell7 = row.insertCell(6);
+
+                        cell1.innerHTML = myNum;
+                        cell2.innerHTML = obj.players[i - 1].Pname;
+                        var img = document.createElement('img');
+                        img.src = obj.players[i - 1].Pimage;
+                        img.style.width = "25%";
+                        cell3.appendChild(img);
+                        cell4.innerHTML = obj.players[i - 1].Pgold;
+                        cell5.innerHTML = obj.players[i - 1].Psilver;
+                        cell6.innerHTML = obj.players[i - 1].Pbronze;
+                        cell7.innerHTML = (obj.players[i - 1].fullTime).substr(14, 18);
+                    }
+                })
+                .fail(function () {
+                    //get fail
+                })
+
+
+        }
+
+
+        function calcTimeScore() {
+            if (playerTime <= (goldTime * qsum)) {
+                timeScore = ((goldTime * qsum) - playerTime) / 10;
+            }
+            if (playerTime <= (silverTime * qsum)) {
+                timeScore = ((silverTime * qsum) - playerTime) / 20;
+            }
+            if (playerTime <= (bronzeTime * qsum)) {
+                timeScore = ((bronzeTime * qsum) - playerTime) / 30;
+            }
+            if (playerTime > (bronzeTime * qsum)) {
+                timeScore = (playerTime - (bronzeTime * qsum)) / -30;
+
+                console.log("timeScore = " + timeScore);
+            }
+        }
+        function calcMedalsScore() {
+
+
+
+            medalScore = (playerGoldM * goldM) + (playerSilverM * silverM) + (playerBronzeM * bronzeM);
+            console.log("medalScore = " + medalScore);
+        }
+
+
+        function calcEndSCore() {
+
+            endScore = timeScore + medalScore;
+            console.log(endScore)
+        }
+
+        myData() 
+
+        //fillTable();
+
+        document.getElementById("playerImg").src = readCookie("avatarImg");
+        document.getElementById("playerImg").style.width = "5%";
+        document.getElementById("seconds").innerHTML = pad(totalSeconds % 60);
+        document.getElementById("minutes").innerHTML = pad(parseInt(totalSeconds / 60));
+        clearInterval(playTimer);
+        function leadTimer() {
+
+            setInterval(fillTable, 1000);
+
+        }
+      
+
+    </script>
+
+
+
+</body>
+</html>

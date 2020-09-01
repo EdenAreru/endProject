@@ -1,0 +1,136 @@
+﻿<!doctype html>
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <title>הזנת פרטים</title>
+    <meta name="description" content="על המשתמש להזין פרטים למערכת קדם משחק" />
+    <meta name="keywords" content="נתונים, שם, משחק" />
+    <meta name="author" content="Eden Barayev & Korin Kashi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- CSS -->
+    <link href="Styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/myStyle.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!-- Scripts -->
+    <script src="jScripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="jScripts/JavaScript.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container" class="centerMe">
+
+        <h1 class="instructions" style=" padding-top: 10vw; margin-top: unset;">
+            בואו נבנה את הגיבור/ה שלנו
+        </h1>
+        <br />
+        <p></p>
+        <input id="playerName" type="text" style=" border-radius: 25px;" placeholder="הזינו שם..." onkeyup="restrict_length(this, 20); checkName()" />
+        <p id="nameUsed" style="color:red"></p>
+        <div id="genderDiv">
+            <div class="row" style="margin-top:17%">
+                <p>בחרו:</p>
+                <div class="column" style="margin-top:6%">
+                    <p id="fGender">בת</p>
+                    <br />
+                    <img id="femaleImg" src="images/female/female.png" alt="בת" style="width:80% " onclick="setFilterF()" />
+                </div>
+                <div class="column" style="margin-top:6%">
+                    <p id="mGender">בן</p>
+                    <br />
+                    <img id="maleImg" src="images/male/male.png" alt="בן" style="width:80%" onclick="setFilterM()" />
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <input id="Fbtn" class="button centerMe" type="button" value="עיצוב הגיבורה" onclick="insertData(), transferToFAvatar() " />
+        <input id="Mbtn" class="button centerMe" type="button" value="עיצוב הגיבור" onclick="insertData(), transferToMAvatar()" />
+        <script type="text/javascript">
+
+
+            function checkName() {
+
+
+
+                if (document.getElementById('playerName').value != "") {
+
+                    $.get("checkNameHandler.ashx", {
+                        //get parameters
+                        myName: document.getElementById("playerName").value,
+                    })
+                        .done(function (data) {
+                            //get success
+                             //printing  the response in the console
+                                console.log(data);
+                            if (data == "used") {
+                                document.getElementById("nameUsed").innerHTML = "השם הזה תפוס :(";
+                                document.getElementById('genderDiv').style.visibility = "hidden";
+                                document.getElementById('Fbtn').style.visibility = "hidden";
+                                document.getElementById('Mbtn').style.visibility = "hidden";
+                            }
+                            else {
+                                    document.getElementById("nameUsed").innerHTML = "";
+                                    createCookie("playerName", document.getElementById("playerName").value, 1);
+                                    document.getElementById('genderDiv').style.visibility = "visible";
+                                }
+                        })
+                        .fail(function () {
+                            //get fail
+                        })
+
+
+
+                    //$.get("checkNameHandler.ashx", {
+                    //    myName: document.getElementById("playerName").value//sent players table
+                    //},
+                    //    function (data, status) {
+
+                    //        if (status == "success") {
+                    //            //printing  the response in the console
+                    //            console.log(data);
+                    //            if (data == "used") {
+                    //                document.getElementById("nameUsed").innerHTML = "השם הזה תפוס :(";
+                    //                document.getElementById('genderDiv').style.visibility = "hidden";
+                    //                document.getElementById('Fbtn').style.visibility = "hidden";
+                    //                document.getElementById('Mbtn').style.visibility = "hidden";
+                    //            }
+                    //            else {
+                    //                document.getElementById("nameUsed").innerHTML = "";
+                    //                createCookie("playerName", document.getElementById("playerName").value, 1);
+                    //                document.getElementById('genderDiv').style.visibility = "visible";
+                    //            }
+                    //        }
+                    //    });
+                }           
+            }
+
+
+            function insertData() {
+                //call to handler
+               
+                $.get("‏‏‏‏InsertHandler.ashx", {
+                    myName: document.getElementById("playerName").value//sent players table
+                },
+                    function (data, status) {
+
+                        if (status == "success") {
+
+                            //printing  the response in the console
+                            console.log(data);                         
+                        }
+                    });
+
+            }
+
+            //איפוס הוראות בכניסה לעמוד המפה
+            createCookie("pressedInst", "no", 1);
+            document.getElementById('Fbtn').style.visibility = "hidden";
+            document.getElementById('Mbtn').style.visibility = "hidden";
+            document.getElementById('genderDiv').style.visibility = "hidden";
+            document.getElementById('maleImg').style.filter = "grayscale(100%)";
+            document.getElementById('femaleImg').style.filter = "grayscale(100%)";
+        </script>
+    </div>
+
+</body>
+</html>

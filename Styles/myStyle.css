@@ -1,0 +1,622 @@
+﻿:root {
+    --main-darkGray: #434343;
+    --main-lightGray: #EFEFEF;
+    --main-pink: #FA7160;
+    --main-lightblue: #99D8D0;
+    --main-cream: #E9E7D4;
+    --main-darkBlue: #44546A;
+    --main-green: #CADD5E;
+    --main-red: #FF562B;
+}
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+body {
+    direction: rtl;
+    font-family: 'Heebo', sans-serif;
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+  /*  background-color: rgba(0,0,0,0.8);*/
+    /*    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(153,216,208,1) 100%);*/
+}
+
+@-webkit-keyframes fontfix {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.s-img {
+    float: right;
+    margin-left: 10px;
+    clear: both;
+}
+
+.s-p {
+    margin-right: 0px;
+    overflow: auto;
+    display: block;
+}
+
+#welcome-screen {
+    margin-top: 30%;
+}
+
+    #welcome-screen h1 {
+        font-size: large;
+    }
+
+/*.row {
+    display: flex;
+}*/
+
+/* Create three equal columns that sits next to each other */
+.column {
+    float: left;
+    width: 47vw;
+    padding: 1vw;
+    display: inline-block;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.centerMe {
+    text-align: center;
+    margin: auto;
+    /*position: center;*/
+    /*width: 50%;*/
+    /*display:block;*/
+    /*align-content: center;*/
+}
+#startGame{
+    margin-top: 5vw;
+}
+
+#welcomeInfo {
+    margin-top: 23vw;
+}
+.button {
+    color: white;
+    background-color: var(--main-pink);
+    border-radius: 27px;
+    border: none;
+    height: auto;
+    display: block;
+    padding: 2vw 5vw 2vw 5vw;
+    font-size: 4vw;
+    box-shadow: 1px 3px 5px var(--main-darkGray);
+
+/* background: radial-gradient(at 80% 0, rgba(255, 221, 221, .15) 50%, transparent 51%) 50%/ 150% 210% border-box, radial-gradient(closest-side, #ff5735, rgba(207, 39, 5, 0)) 50% 100%/ 80%, linear-gradient(#e73200, crimson) content-box, linear-gradient(#ba3e38, #f07252) border-box;
+*/
+}
+
+/*איך משחקים*/
+#howToPlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 2;
+    cursor: pointer;
+}
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 5vw;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+.overCell{
+    width: 80%;
+}
+.centerThis {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.bottomElement {
+    margin-bottom: 50% !important;
+}
+
+#howToPlay p {
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+/*אודות*/
+
+#about {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 2;
+    cursor: pointer;
+}
+
+
+
+
+.avatarBody {
+    margin-top: 20%;
+    width: 50%;
+}
+
+.instructions {
+    /*display:block;*/
+    margin-top: 10%;
+    padding: 3% 0 3% 0;
+    height: 20%;
+    background-color: var(--main-lightblue);
+    font-size: 7vw;
+    font-weight: bold;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+/* external css: flickity.css */
+
+/** {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}*/
+
+
+.gallery {
+    background: #EEE;
+}
+
+.gallery-cell {
+    width: 30%;
+    height: 80px;
+    margin-right: 5%;
+    background: #8C8;
+    counter-increment: gallery-cell;
+}
+
+    /* cell number */
+    .gallery-cell:before {
+        display: block;
+        text-align: center;
+        content: counter(gallery-cell);
+        line-height: 80px;
+        font-size: 20px;
+        color: white;
+    }
+
+.c-img {
+    height: 80px;
+    border-radius: 25px;
+}
+
+.c-div {
+    width: 30%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+c-clicked {
+    background-image: url('images/check-mark.webp');
+}
+
+.c-chekmark {
+    z-index: 2;
+    margin-top: -123%;
+    position: absolute;
+}
+
+.AvatarWheel {
+    margin-top: 10%;
+}
+
+#finishAvatar {
+    display: block;
+    display: none;
+    margin-top: 8%;
+}
+
+#myGoogleMap {
+    height: 100%;
+}
+
+.myMap {
+    /*max-width: 550px;
+    position: relative;
+    margin: 1rem;
+    padding: 0;*/
+}
+
+#mapImage {
+    /*display: block;*/
+    /*height: 100%;
+    width: 100%;*/
+    width: 60%;
+    z-index: -10;
+    /*white-space: nowrap;*/
+}
+
+/*תפריט נפתח*/
+
+#menuIcon {
+    font-size: 8vw;
+    margin-right: 3vw;
+    color: var(--main-red);
+}
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    right: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 7vw;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+    /* When you mouse over the navigation links, change their color */
+    .overlay a:hover, .overlay a:focus {
+        color: #f1f1f1;
+    }
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.shields {
+    background: var(--main-cream);
+    border-radius: 29px;
+    content: '';
+    display: inline-block;
+    height: 13%;
+    width: 16%;
+    margin-right: 3%;
+    padding-top: 5%;
+    margin-top: 2%;
+    /*margin-top: 6%;*/
+    /* transform: translateY(-50%); */
+    /* z-index: 1;*/
+}
+
+#timer {
+    float: left;
+    margin-left: 6%;
+    margin-top: 1.7vw;
+    font-size: 4.5vw;
+    color: var(--main-cream);
+}
+
+#goldShield {
+    margin-right: 7vw;
+}
+
+.shImages {
+    /* width: 26%; */
+    position: absolute;
+    z-index: 1;
+    /* top: -9%; */
+    margin-top: -6%;
+    /* height: 141%; */
+    width: 5%;
+    margin-right: -1.5%;
+    transform: rotate(12deg);
+}
+
+.score {
+    position: absolute;
+    z-index: 1;
+    margin-top: -5.5%;
+    margin-right: 6%;
+    color: var(--main-darkGray);
+    font-size: 4.5vw
+}
+
+#minutes, #seconds {
+    display: inline-block;
+}
+
+#navContainer {
+    height: 10vw;
+    background-color: var(--main-darkGray);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+#navAbsolute {
+    position: absolute;
+    width: 100%
+}
+
+#gameContainer {
+    padding-top: 10vw;
+    background-image: url(/images/map.PNG);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.progressbar {
+    margin-top: 26px;
+    margin-bottom: 76px;
+}
+    .progressbar li {
+        list-style-type: none;
+        width: 25vw;
+        float: left;
+        font-size: 12px;
+        position: relative;
+        text-align: center;
+        color: #7d7d7d;
+    }
+        .progressbar li:before {
+            width: 24px;
+            height: 24px;
+            content: "";
+            line-height: 23px;
+            border: 2px solid #7d7d7d;
+            display: block;
+            text-align: center;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background-color: white;
+        }
+    .progressbar li.done:before {
+        content: "✓";
+        font-weight: bold;
+      color: #ffffff;
+      font-size: 20px;
+/*        content: '';*/
+        display: inline-block;
+        background-image: url('images/male/1x/Asset 1.png');
+        background-size: contain;
+    }
+  .progressbar li:after {
+      width: 100%;
+      height: 2px;
+      content: '';
+      position: absolute;
+      background-color: #7d7d7d;
+      top: 15px;
+      left: -50%;
+      z-index: -1;
+  }
+  .progressbar li:first-child:after {
+      content: none;
+  }
+  .progressbar li.active {
+      color: green;
+  }
+  .progressbar li.active:before {
+      border-color: #55b776;
+      background-color: #55b776;
+  }
+  .progressbar li.active + li:after {
+      background-color: #55b776;
+  }
+  .progressbar li.done:before {
+      border-color: #55b776;
+      background-color: #55b776;
+  }
+  .progressbar li.done + li:after {
+      background-color: #55b776;
+  }
+  .progressbar li.inactive:before {
+      border-color: #7d7d7d;
+      background-color: #7d7d7d;
+  }
+  .progressbar li.inactive + li:after {
+      background-color: #7d7d7d;
+  }
+
+
+#bigPicDiv {
+    visibility:hidden;
+    background-color:rgba(0,0,0, 0.9); /* Black w/opacity */
+    position:absolute;
+    z-index: 2;
+    width:100%;
+    height: 100%;
+}
+
+
+#checkSort {
+    margin-top: 17vw;
+}
+#1 {
+    margin-top: 34vw;
+}
+
+.list-group-item {
+    /*width: 80vw;
+    margin: auto;
+    text-align: center;*/
+    margin: 2vw;
+    margin-bottom: 3vw;
+    box-shadow: 1px 3px 5px grey;
+    border-radius: 10px !important;
+    background-color: var(--main-lightGray) !important;
+    font-size: 4.5vw;
+}
+
+.puzImage {
+    width: 80vw;
+    height: 10vw;
+    padding: 0px 0px !important;
+    margin: 0 !important;
+    margin-bottom: 15px !important;
+}
+
+#myList {
+    width: 80vw;
+    margin: auto !important;
+    text-align: center !important;
+}
+
+.qImage {
+    height: 77vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 2vw;
+    margin-bottom: 4vw;
+    margin-top: 4vw;
+}
+
+
+#qintstraction {
+    margin-right: 3vw;
+    margin-top: 6vw;
+}
+
+.triviaAns {
+    display: inline-block;
+    width: 46vw;
+    padding: 1.5vw;
+    border-radius: 7px;
+    background-color: var(--main-lightGray);
+    margin: 2vw 1vw 2vw 1vw;
+    height: 22vw;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    box-shadow: 1px 3px 5px grey;
+    font-size: 4.5vw;
+}
+#correctfeedbackTrivia {
+    visibility: hidden;
+    height: 77vw;
+    display: block;
+    width: 100%;
+    justify-self: center;
+    position: absolute;
+    margin-top: -81vw;
+    z-index: 2;
+    padding: 2vw;
+    border-radius: 25px;
+    background-color: var(--main-green);
+}
+#feedback {
+    font-size: 4vw;
+}
+.completeAns {
+    display: block;
+    width: 90vw;
+    padding: 1.5vw;
+    border-radius: 7px;
+    background-color: var(--main-lightGray);
+    margin: auto;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    height: 16vw;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    box-shadow: 1px 3px 5px grey;
+    font-size: 4.5vw;
+}
+.completeP {
+   
+    padding: 3vw;
+}
+#completeQ {
+    font-size: 4.5vw;
+    height: 48vw;
+}
+.completeAnsDiv {
+}
+#correctfeedbackComplete {
+    visibility: hidden;
+    height: 66vw;
+    display: block;
+    width: 100%;
+    justify-self: center;
+    position: absolute;
+    margin-top: -52vw;
+    z-index: 2;
+    padding: 2vw;
+    border-radius: 25px;
+    background-color: var(--main-green);
+}
+.block{
+    display: block;
+
+}
+
+
+#leaderBoardTable{
+    width: 90% !important;
+    margin-top: 5%;
+    align-content: center;
+}
+
+th, td {
+    text-align: center !important;
+    vertical-align: middle !important;
+
+}
+

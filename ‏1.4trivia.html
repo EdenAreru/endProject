@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <title>שאלה סגורה חד ברירה</title>
+    <meta name="description" content="בעמוד זה על המשתמש לענות על שאלת חד ברירה" />
+    <meta name="keywords" content="חד ברירה, טריויה" />
+    <meta name="author" content="Eden Barayev & Korin Kashi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+    <link href="Styles/my.css" rel="stylesheet" />
+    <link href="Styles/reset.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/myStyle.css" rel="stylesheet" type="text/css" />
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!-- Scripts -->
+    <script src="jScripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="jScripts/JavaScript.js" type="text/javascript"></script>
+
+
+
+
+</head>
+<body>
+    <header>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <nav class="overlay-content">
+                <ul>
+                    <li><a id="playerNav" href="#"><img id="playerImg" /></a></li>
+                    <li><a href="#" onclick="HowToPlayOn(); closeNav()"> ⯑ איך משחקים</a></li>
+                    <li><a href="#" onclick="aboutOn(); closeNav()">🛈 אודות</a></li>
+                    <li><a href="#" onclick="transferto('Map.html')">🗺 חזרה למפה</a></li>
+                </ul>
+            </nav>
+        </div>
+        <script type="text/javascript">
+            document.getElementById("playerNav").innerHTML += " " + readCookie("playerName") + " ";
+            document.getElementById("playerNav").disabled = true;
+        </script>
+
+
+        <div id="navAbsolute">
+
+            <div id="navContainer">
+                <span id="menuIcon" style="font-size:7vw; cursor:pointer; color: var(--main-cream); padding-right: 4vw;" onclick="openNav()">&#9776;</span>
+
+                <div id="goldShield" class="shields">
+                    <img src="images/goldShield.png" class="shImages" />
+                    <span id="goldScore" class="score"></span>
+                </div>
+                <div id="silverShield" class="shields">
+                    <img src="images/silverShield.png" class="shImages" />
+                    <span id="silverScore" class="score"></span>
+                </div>
+                <div id="bronzeShield" class="shields">
+                    <img src="images/bronzeShield.png" class="shImages" />
+                    <span id="bronzeScore" class="score"></span>
+                </div>
+                <div id="timer"><p id="seconds">00</p>:<p id="minutes">00</p></div>
+
+
+            </div>
+        </div>
+    </header>
+
+    <div id="about">
+        <div style="color: white; margin-top: 13%; " class="centerMe">
+            <h5 style="font-size: 3.5vw; margin-top: 20%;">אודות</h5>
+            <a href="#" onclick="aboutOff()" style="color: white; font-size: 5vw; position: absolute; margin-top: -20px; margin-right: -45vw;">✖</a>
+            <hr />
+            <p style="font-weight: bold; font-size: 4vw;">"גיבורי הראל"</p>
+            <p style=" font-size: 3.5vw;">משחק חוויתי מבוסס מכשירים ניידים עבור גבעת התחמושת </p>
+            <br />
+            <p style=" font-size: 3.5vw;">פרויקט גמר, תש"פ</p>
+            <a style=" font-size: 3vw; text-decoration-line: underline;" href="http://www.hit.ac.il/telem/overview">הפקולטה לטכנולוגיות למידה</a>
+            <br />
+            <div class="centerThis" style=" margin-top: 5vw; font-size: 2.6vw;">
+                <img src="/images/hitLogo.JPG" style="width: 32%;" alt="לוגו פקולטת טכנולוגיות למידה" class="s-img" />
+                <div style="text-align:right" class="s-p">
+                    <p style="font-weight: bold;">צוות הפרויקט:</p>
+                    <p>עדן בראייב וקורין קאשי</p>
+                    <p style="font-weight: bold;">מנחות:</p>
+                    <p>רותם ישראל-פישלזון ולילך גל</p>
+                </div>
+                <img src="/images/GivhaLogo.png" style="width: 32%; margin-top: 3%" alt="לוגו גבעת התחמושת" class="s-img" />
+
+                <div style="text-align:right;margin-top: 3%" class="s-p">
+                    <p>בשיתוף עם האתר הלאומי גבעת התחמושת</p>
+                    <p>מומחה תוכן: נחום ברוכי</p>
+                    <p>נציגי הארגון: אלון ולד ולילך שיריון</p>
+
+                </div>
+
+            </div>
+            <hr />
+            <a href="https://icons8.com/icon/43987/clock">זכויות יוצרים אייקונים</a> <span> | </span>
+            <a href="https://all-free-download.com/free-vector/download/super-cute-cartoon-girl-vector_156805.html">זכויות יוצרים דמויות משתמש</a>
+            <p>
+                © כל הזכויות שמורות למכון טכנולוגי חולון HIT
+            </p>
+
+        </div>
+    </div>
+
+
+    <div id="howToPlay">
+        <div id="myCarousel" style="width:100%" class="carousel overlay-text">
+            <a href="javascript:void(0)" class="closebtn" onclick="HowToPlayOff()" style="color: white; margin-right: 15%; font-size: 10vw;">&times;</a>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <div class="item active centerThis">
+                    <p class="centerMe">מה צריך לעשות?</p>
+                    <img src="https://img.icons8.com/bubbles/100/000000/army-star.png" class="centerThis" width="70%" />
+                    <p class="bottomElement centerMe">למצוא את כל התחנות עם הכוחות על המפה ולכבוש אותן</p>
+                </div>
+                <div class="item  centerThis">
+                    <p class="centerMe">איך לנצח:</p>
+                    <img src="https://img.icons8.com/nolan/64/clock.png" class="centerThis" width="70%" />
+                    <p class="bottomElement centerMe">עונים על השאלות מהר</p>
+                </div>
+                <div class="item  centerThis">
+                    <p class="centerMe">איך לנצח:</p>
+                    <img src="https://img.icons8.com/nolan/64/checkmark.png" class="centerThis" width="70%" />
+                    <p class="bottomElement centerMe">עונים על השאלות נכון וצוברים מגנים</p>
+
+                </div>
+                <div class="item  centerThis">
+                    <p class="centerMe">סוגי מגנים:</p>
+
+                    <img src="images/goldShield.png" class="s-img " style="width: 10vw; " />
+                    <p class="s-p" display:inline-block">זהב, מענה נכון בניסיון ראשון</p>
+                    <img src="images/silverShield.png" class="s-img " style="width: 10vw; " />
+                    <p class="s-p" display:inline-block">כסף, מענה נכון בניסיון שני</p>
+                    <img src="images/bronzeShield.png" class="s-img " style="width: 10vw; " />
+                    <p class="s-p bottomElement" display:inline-block">ערד, ניסיון שלישי ומעלה</p>
+
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">next</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </div>
+
+    </div>
+
+    <div id="qdiv">
+        <h1 class="instructions centerMe">גבעת המבתר - דוגמא אישית</h1>
+
+    </div>
+    <ul class="progressbar">
+
+        <li class="active"></li>
+        <li class="done"></li>
+        <li class="done"></li>
+        <li class="done"></li>
+
+    </ul>
+
+    <div id="bigPicDiv">
+        <a href="#" onclick="closeLargeImg()" style=" color: white; font-size: 5vw; position: absolute; margin-top: 2vw; margin-right: 2vw;">✖</a>
+        <img id="myImg" src="images/qImages/1.4.jpg" style="margin-top: 11vw; width: 100vw; height: auto; " class="centerMe qImage"/>
+    </div>
+    <img id="myImg" src="images/qImages/1.4.jpg" style=" width: 73vw;" alt="תמונה של יחידת הראל" class="centerMe qImage" />
+
+    <img src="https://img.icons8.com/nolan/64/ophthalmology.png" style="margin-top: -6vw; margin-right: 14vw; width: 9vw;" onclick="openLargeImg()" />
+    <div id="correctfeedbackTrivia" class="greenFBscreen" style="height: 97vw;">
+        <h1 class="centerMe" style="margin-top: 10vw; font-size: 9vw;">תשובה נכונה!</h1>
+        <p style="font-size: 5.5vw; margin-top: 5vw">הידעת?</p>
+        <p id="FBinformation" style="font-size: 5.5vw;">
+            בפבואר 1989, בגיל 85, נפטר החייל הכי מבוגר בצה"ל, דוד לסקוס ז"ל.  הוא השתתף ברוב ממלחמות ישראל לרבות מלחמת ששת הימים.
+            הוכר ע"י ספר השיאים של גינס כחייל הזקן בעולם.
+        </p>
+        <input id="nextQBtn" class="button centerMe" type="button" value="הבא" onclick="createCookie('pSeconds', totalSeconds, 1);transferto('Map.html') ; addPageCounter('done', 'GivhaMivtar')" />
+
+    </div>
+    <div id="qintstraction">
+        <p id="qtxt" style="font-size: 4vw; font-weight: bold;">
+            על פי הכתוב, כמה שנים עברו מאז גירוש היהודים בירושלים?
+        </p>
+        <p style="font-size: 3.5vw;">
+            בחרו את התשובה הנכונה ביותר.
+        </p>
+    </div>
+    <div class="centerMe triviaAnsDiv">
+        <p id="wrongFeedbackTrivia" style="color: var(--main-red); margin:0"></p>
+        <div class="triviaAns notCorrect">
+            1756
+        </div>
+        <div class="triviaAns correct">
+            1897
+        </div>
+        <div class="triviaAns notCorrect">
+            1967
+        </div>
+        <div class="triviaAns notCorrect">
+            1956
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+
+        var mistakesNum = 0;
+        var quesitons = document.getElementsByClassName("triviaAns");
+        for (var i = 0; i < quesitons.length; i++) {
+            quesitons[i].addEventListener('click', isCorrect, false);
+        }
+
+        function isCorrect() {
+
+            //איפוס
+            for (var i = 0; i < quesitons.length; i++) {
+                quesitons[i].style.backgroundColor = "var(--main-lightGray)";
+            }
+            //בדיקה אם נלחץ האלמנט הנכון
+            if (this.className.split(' ')[1] == "correct") {
+                //ביטול אפשרות לחיצה על תשובות נוספות
+                for (var i = 0; i < quesitons.length; i++) {
+                    quesitons[i].removeEventListener('click', isCorrect);
+                }
+                this.style.backgroundColor = "var(--main-green)";
+                document.getElementById("correctfeedbackTrivia").style.visibility = "visible";
+                addScore(mistakesNum);
+
+            }
+            else {
+                mistakesNum++;
+                this.style.backgroundColor = "var(--main-red)";
+                document.getElementById("wrongFeedbackTrivia").innerHTML = "!אופס, כמעט. נסו שוב."
+
+            }
+
+
+        };
+
+        startTimer();
+        document.getElementById("playerImg").src = readCookie("avatarImg");
+        document.getElementById("playerImg").style.width = "5%";
+        document.getElementById("seconds").innerHTML = pad(totalSeconds % 60);
+        document.getElementById("minutes").innerHTML = pad(parseInt(totalSeconds / 60));
+
+
+
+    </script>
+
+
+
+</body>
+</html>
