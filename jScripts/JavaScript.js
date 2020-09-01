@@ -253,7 +253,7 @@ function pad(val) {
 
 function startTheGameBtn() {
 
-    window.location.href = "map.html";
+    window.location.href = "Map.html";
     //setInterval(setTime(), 1000);
 };
 
